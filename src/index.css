@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-900 bg-gradient-to-br from-indigo-50 via-white to-purple-50;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 animate-gradient;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 
+           text-white px-6 py-3 rounded-lg font-medium transition-all duration-300
+           hover:shadow-lg hover:shadow-indigo-500/25 transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-indigo-600 px-6 py-3 rounded-lg font-medium 
+           transition-all duration-300 border border-gray-200
+           hover:shadow-lg hover:shadow-indigo-500/10 transform hover:-translate-y-0.5;
+  }
+
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300
+           hover:shadow-indigo-500/10 hover:border-indigo-200;
+  }
+
+  .shine {
+    @apply relative overflow-hidden;
+  }
+
+  .shine::after {
+    @apply absolute top-0 -right-1/2 w-1/2 h-full;
+    content: '';
+    background: linear-gradient(
+      to left,
+      transparent 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 100%
+    );
+    animation: shine 3s infinite;
+    transform: skewX(-20deg);
+  }
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-20deg); }
+  100% { transform: translateX(300%) skewX(-20deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
