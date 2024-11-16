@@ -55,7 +55,7 @@ function App() {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-600">
-            <p>&copy; {new Date().getFullYear()} BudgetTalent. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} BudgetHire. All rights reserved.</p>
           </div>
         </div>
       </footer>
