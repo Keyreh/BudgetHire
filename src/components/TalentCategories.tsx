@@ -1,51 +1,68 @@
 import React from 'react';
-import { Users, Palette, TrendingUp } from 'lucide-react';
+import { Users, Palette, TrendingUp, Code, Megaphone, LineChart } from 'lucide-react';
 
 export default function TalentCategories() {
   const categories = [
     {
-      icon: <Users className="w-8 h-8 text-indigo-600" />,
+      icon: <Users className="w-8 h-8" />,
       title: "Virtual Assistants",
-      description: "From $8/hour • Administrative support, email management, and customer service",
-      skills: ["Email Management", "Customer Support", "Calendar Management", "Data Entry"]
+      rate: "From $8/hour",
+      description: "Administrative support, email management, and customer service specialists"
     },
     {
-      icon: <Palette className="w-8 h-8 text-indigo-600" />,
+      icon: <Code className="w-8 h-8" />,
+      title: "Developers",
+      rate: "From $25/hour",
+      description: "Full-stack, frontend, and backend development experts"
+    },
+    {
+      icon: <Palette className="w-8 h-8" />,
       title: "Designers",
-      description: "From $15/hour • UI/UX design, graphics, and brand identity",
-      skills: ["UI/UX Design", "Graphic Design", "Brand Identity", "Web Design"]
+      rate: "From $15/hour",
+      description: "UI/UX design, graphics, and brand identity professionals"
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-indigo-600" />,
+      icon: <Megaphone className="w-8 h-8" />,
       title: "Marketers",
-      description: "From $12/hour • Social media, content, and growth marketing",
-      skills: ["Social Media", "SEO", "Content Marketing", "Email Marketing"]
+      rate: "From $12/hour",
+      description: "Social media, content, and growth marketing specialists"
+    },
+    {
+      icon: <LineChart className="w-8 h-8" />,
+      title: "Data Analysts",
+      rate: "From $18/hour",
+      description: "Business intelligence and data analysis experts"
+    },
+    {
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "Project Managers",
+      rate: "From $20/hour",
+      description: "Agile project management and team coordination professionals"
     }
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-32 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-indigo-600 font-medium mb-4 block shine">Our Services</span>
-          <h2 className="text-4xl font-bold mb-4 gradient-text">Remote Talent Categories</h2>
-          <p className="text-gray-600 text-lg">Pre-vetted professionals ready to help grow your business</p>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <h2 className="text-4xl font-bold mb-6 text-white">Talent Categories</h2>
+          <p className="text-xl text-gray-400">Access a diverse pool of pre-vetted professionals ready to help grow your business</p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category, index) => (
-            <div key={index} className="bg-white/50 backdrop-blur-sm rounded-xl p-8 border border-gray-200 card-hover group">
-              <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                {category.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3">{category.title}</h3>
-              <p className="text-gray-600 mb-6">{category.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span key={skill} className="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-lg text-sm group-hover:bg-indigo-100 transition-colors">
-                    {skill}
-                  </span>
-                ))}
+            <div 
+              key={index} 
+              className="group relative overflow-hidden rounded-2xl bg-gray-800/50 p-8 hover:bg-gray-800 transition-all duration-300"
+            >
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+              <div className="relative z-10">
+                <div className="mb-6 p-3 bg-gray-700/50 rounded-lg inline-block text-indigo-400 group-hover:text-indigo-300 transition-colors">
+                  {category.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-white">{category.title}</h3>
+                <p className="text-indigo-400 mb-3">{category.rate}</p>
+                <p className="text-gray-400 group-hover:text-gray-300 transition-colors">{category.description}</p>
               </div>
             </div>
           ))}

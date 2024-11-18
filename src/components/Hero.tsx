@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   onHire: () => void;
@@ -8,58 +8,65 @@ interface HeroProps {
 export default function Hero({ onHire }: HeroProps) {
   return (
     <div className="relative min-h-screen flex items-center">
-      {/* Dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900"></div>
-      
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 via-purple-500/10 to-pink-500/10 animate-gradient"></div>
-      
-      {/* Radial gradient for depth */}
-      <div className="absolute inset-0 bg-gradient-radial from-white/5 via-transparent to-transparent"></div>
+      {/* Background with gradient overlay */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80"
+        >
+          <source src="https://cdn.coverr.co/videos/coverr-people-working-in-the-office-5244/1080p.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 to-gray-900/70"></div>
+      </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative pt-32 pb-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-flex items-center text-indigo-300 font-medium mb-4 px-4 py-1 rounded-full bg-indigo-900/50 backdrop-blur-sm shine">
-            <Sparkles className="w-4 h-4 mr-2 animate-bounce-slow" />
-            Premium Talent, Budget-Friendly Rates
-          </span>
-          
-          <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight text-white">
-            Hire Expert Remote
-            <span className="gradient-text block">Talent On Budget</span>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="max-w-3xl">
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            Hire Top Remote Talent That Fits Your Budget
           </h1>
           
-          <p className="text-xl text-indigo-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Access pre-vetted virtual assistants, designers, and marketers. Save up to 70% on hiring costs with our remote talent.
+          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+            Access pre-vetted professionals at 70% less than traditional hiring. Start scaling your team today.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button onClick={onHire} className="btn-primary flex items-center justify-center group">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button onClick={onHire} className="btn-primary flex items-center justify-center group text-lg px-8 py-4">
               Hire Remote Talent
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </button>
+            <button className="btn-secondary text-lg px-8 py-4">
+              View Talent Pool
+            </button>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-16">
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-8 mt-20">
             {[
+              ['500+', 'Active Talent'],
               ['70%', 'Cost Savings'],
-              ['24h', 'Matching Time'],
-              ['100%', 'Money-back Guarantee'],
-              ['4.9/5', 'Client Rating']
+              ['24h', 'Matching Time']
             ].map(([number, label]) => (
-              <div key={label} className="text-center animate-float">
-                <div className="text-3xl font-bold text-white">{number}</div>
-                <div className="text-indigo-200 mt-1">{label}</div>
+              <div key={label} className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">{number}</div>
+                <div className="text-gray-400">{label}</div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Decorative blur circles */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-500/30 rounded-full filter blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500/30 rounded-full filter blur-3xl"></div>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+        <div className="w-8 h-12 rounded-full border-2 border-white/30 flex items-center justify-center">
+          <div className="w-1 h-3 bg-white/50 rounded-full"></div>
+        </div>
+        <span className="text-white/50 mt-2 text-sm">Scroll</span>
+      </div>
     </div>
   );
 }
